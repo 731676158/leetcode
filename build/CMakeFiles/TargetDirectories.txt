@@ -4,5 +4,3 @@
 /home/pineapple/leet/leetcode/build/bin/CMakeFiles/rebuild_cache.dir
 /home/pineapple/leet/leetcode/build/bin/CMakeFiles/algr.dir
 /home/pineapple/leet/leetcode/build/bin/CMakeFiles/leet_test.dir
-/home/pineapple/leet/leetcode/build/include/CMakeFiles/rebuild_cache.dir
-/home/pineapple/leet/leetcode/build/include/CMakeFiles/edit_cache.dir

@@ -74,19 +74,16 @@ CMAKE_BINARY_DIR = /home/pineapple/leet/leetcode/build
 
 # The main recursive "all" target.
 all: bin/all
-all: include/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
 preinstall: bin/preinstall
-preinstall: include/preinstall
 
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: bin/clean
-clean: include/clean
 
 .PHONY : clean
 
@@ -109,24 +106,6 @@ bin/clean: bin/CMakeFiles/algr.dir/clean
 bin/clean: bin/CMakeFiles/leet_test.dir/clean
 
 .PHONY : bin/clean
-
-#=============================================================================
-# Directory level rules for directory include
-
-# Recursive "all" directory target.
-include/all:
-
-.PHONY : include/all
-
-# Recursive "preinstall" directory target.
-include/preinstall:
-
-.PHONY : include/preinstall
-
-# Recursive "clean" directory target.
-include/clean:
-
-.PHONY : include/clean
 
 #=============================================================================
 # Target rules for target bin/CMakeFiles/algr.dir
