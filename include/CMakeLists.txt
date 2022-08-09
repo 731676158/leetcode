@@ -1,0 +1,1 @@
+ADD_LIBRARY(LEETCODE_LIB STATIC basic.h;offer.h;algorithms.h;LC217.h)
