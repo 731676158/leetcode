@@ -77,27 +77,27 @@ include bin/CMakeFiles/algr.dir/progress.make
 # Include the compile flags for this target's objects.
 include bin/CMakeFiles/algr.dir/flags.make
 
-bin/CMakeFiles/algr.dir/algorithm.o: bin/CMakeFiles/algr.dir/flags.make
-bin/CMakeFiles/algr.dir/algorithm.o: ../src/algorithm.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pineapple/leet/leetcode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object bin/CMakeFiles/algr.dir/algorithm.o"
-	cd /home/pineapple/leet/leetcode/build/bin && /usr/lib/ccache/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/algr.dir/algorithm.o -c /home/pineapple/leet/leetcode/src/algorithm.cpp
+bin/CMakeFiles/algr.dir/algorithm.cpp.o: bin/CMakeFiles/algr.dir/flags.make
+bin/CMakeFiles/algr.dir/algorithm.cpp.o: ../src/algorithm.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pineapple/leet/leetcode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object bin/CMakeFiles/algr.dir/algorithm.cpp.o"
+	cd /home/pineapple/leet/leetcode/build/bin && /usr/lib/ccache/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/algr.dir/algorithm.cpp.o -c /home/pineapple/leet/leetcode/src/algorithm.cpp
 
-bin/CMakeFiles/algr.dir/algorithm.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/algr.dir/algorithm.i"
-	cd /home/pineapple/leet/leetcode/build/bin && /usr/lib/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pineapple/leet/leetcode/src/algorithm.cpp > CMakeFiles/algr.dir/algorithm.i
+bin/CMakeFiles/algr.dir/algorithm.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/algr.dir/algorithm.cpp.i"
+	cd /home/pineapple/leet/leetcode/build/bin && /usr/lib/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pineapple/leet/leetcode/src/algorithm.cpp > CMakeFiles/algr.dir/algorithm.cpp.i
 
-bin/CMakeFiles/algr.dir/algorithm.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/algr.dir/algorithm.s"
-	cd /home/pineapple/leet/leetcode/build/bin && /usr/lib/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pineapple/leet/leetcode/src/algorithm.cpp -o CMakeFiles/algr.dir/algorithm.s
+bin/CMakeFiles/algr.dir/algorithm.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/algr.dir/algorithm.cpp.s"
+	cd /home/pineapple/leet/leetcode/build/bin && /usr/lib/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pineapple/leet/leetcode/src/algorithm.cpp -o CMakeFiles/algr.dir/algorithm.cpp.s
 
 # Object files for target algr
 algr_OBJECTS = \
-"CMakeFiles/algr.dir/algorithm.o"
+"CMakeFiles/algr.dir/algorithm.cpp.o"
 
 # External object files for target algr
 algr_EXTERNAL_OBJECTS =
 
-bin/algr: bin/CMakeFiles/algr.dir/algorithm.o
+bin/algr: bin/CMakeFiles/algr.dir/algorithm.cpp.o
 bin/algr: bin/CMakeFiles/algr.dir/build.make
 bin/algr: bin/CMakeFiles/algr.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pineapple/leet/leetcode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable algr"

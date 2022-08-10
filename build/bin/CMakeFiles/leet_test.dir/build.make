@@ -77,27 +77,27 @@ include bin/CMakeFiles/leet_test.dir/progress.make
 # Include the compile flags for this target's objects.
 include bin/CMakeFiles/leet_test.dir/flags.make
 
-bin/CMakeFiles/leet_test.dir/leetcodeTest.o: bin/CMakeFiles/leet_test.dir/flags.make
-bin/CMakeFiles/leet_test.dir/leetcodeTest.o: ../src/leetcodeTest.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pineapple/leet/leetcode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object bin/CMakeFiles/leet_test.dir/leetcodeTest.o"
-	cd /home/pineapple/leet/leetcode/build/bin && /usr/lib/ccache/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/leet_test.dir/leetcodeTest.o -c /home/pineapple/leet/leetcode/src/leetcodeTest.cpp
+bin/CMakeFiles/leet_test.dir/leetcodeTest.cpp.o: bin/CMakeFiles/leet_test.dir/flags.make
+bin/CMakeFiles/leet_test.dir/leetcodeTest.cpp.o: ../src/leetcodeTest.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pineapple/leet/leetcode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object bin/CMakeFiles/leet_test.dir/leetcodeTest.cpp.o"
+	cd /home/pineapple/leet/leetcode/build/bin && /usr/lib/ccache/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/leet_test.dir/leetcodeTest.cpp.o -c /home/pineapple/leet/leetcode/src/leetcodeTest.cpp
 
-bin/CMakeFiles/leet_test.dir/leetcodeTest.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/leet_test.dir/leetcodeTest.i"
-	cd /home/pineapple/leet/leetcode/build/bin && /usr/lib/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pineapple/leet/leetcode/src/leetcodeTest.cpp > CMakeFiles/leet_test.dir/leetcodeTest.i
+bin/CMakeFiles/leet_test.dir/leetcodeTest.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/leet_test.dir/leetcodeTest.cpp.i"
+	cd /home/pineapple/leet/leetcode/build/bin && /usr/lib/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pineapple/leet/leetcode/src/leetcodeTest.cpp > CMakeFiles/leet_test.dir/leetcodeTest.cpp.i
 
-bin/CMakeFiles/leet_test.dir/leetcodeTest.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/leet_test.dir/leetcodeTest.s"
-	cd /home/pineapple/leet/leetcode/build/bin && /usr/lib/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pineapple/leet/leetcode/src/leetcodeTest.cpp -o CMakeFiles/leet_test.dir/leetcodeTest.s
+bin/CMakeFiles/leet_test.dir/leetcodeTest.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/leet_test.dir/leetcodeTest.cpp.s"
+	cd /home/pineapple/leet/leetcode/build/bin && /usr/lib/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pineapple/leet/leetcode/src/leetcodeTest.cpp -o CMakeFiles/leet_test.dir/leetcodeTest.cpp.s
 
 # Object files for target leet_test
 leet_test_OBJECTS = \
-"CMakeFiles/leet_test.dir/leetcodeTest.o"
+"CMakeFiles/leet_test.dir/leetcodeTest.cpp.o"
 
 # External object files for target leet_test
 leet_test_EXTERNAL_OBJECTS =
 
-bin/leet_test: bin/CMakeFiles/leet_test.dir/leetcodeTest.o
+bin/leet_test: bin/CMakeFiles/leet_test.dir/leetcodeTest.cpp.o
 bin/leet_test: bin/CMakeFiles/leet_test.dir/build.make
 bin/leet_test: bin/CMakeFiles/leet_test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pineapple/leet/leetcode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable leet_test"

@@ -160,35 +160,59 @@ leet_test/fast:
 	cd /home/pineapple/leet/leetcode/build && $(MAKE) $(MAKESILENT) -f bin/CMakeFiles/leet_test.dir/build.make bin/CMakeFiles/leet_test.dir/build
 .PHONY : leet_test/fast
 
-# target to build an object file
-algorithm.o:
-	cd /home/pineapple/leet/leetcode/build && $(MAKE) $(MAKESILENT) -f bin/CMakeFiles/algr.dir/build.make bin/CMakeFiles/algr.dir/algorithm.o
+algorithm.o: algorithm.cpp.o
+
 .PHONY : algorithm.o
 
-# target to preprocess a source file
-algorithm.i:
-	cd /home/pineapple/leet/leetcode/build && $(MAKE) $(MAKESILENT) -f bin/CMakeFiles/algr.dir/build.make bin/CMakeFiles/algr.dir/algorithm.i
+# target to build an object file
+algorithm.cpp.o:
+	cd /home/pineapple/leet/leetcode/build && $(MAKE) $(MAKESILENT) -f bin/CMakeFiles/algr.dir/build.make bin/CMakeFiles/algr.dir/algorithm.cpp.o
+.PHONY : algorithm.cpp.o
+
+algorithm.i: algorithm.cpp.i
+
 .PHONY : algorithm.i
 
-# target to generate assembly for a file
-algorithm.s:
-	cd /home/pineapple/leet/leetcode/build && $(MAKE) $(MAKESILENT) -f bin/CMakeFiles/algr.dir/build.make bin/CMakeFiles/algr.dir/algorithm.s
+# target to preprocess a source file
+algorithm.cpp.i:
+	cd /home/pineapple/leet/leetcode/build && $(MAKE) $(MAKESILENT) -f bin/CMakeFiles/algr.dir/build.make bin/CMakeFiles/algr.dir/algorithm.cpp.i
+.PHONY : algorithm.cpp.i
+
+algorithm.s: algorithm.cpp.s
+
 .PHONY : algorithm.s
 
-# target to build an object file
-leetcodeTest.o:
-	cd /home/pineapple/leet/leetcode/build && $(MAKE) $(MAKESILENT) -f bin/CMakeFiles/leet_test.dir/build.make bin/CMakeFiles/leet_test.dir/leetcodeTest.o
+# target to generate assembly for a file
+algorithm.cpp.s:
+	cd /home/pineapple/leet/leetcode/build && $(MAKE) $(MAKESILENT) -f bin/CMakeFiles/algr.dir/build.make bin/CMakeFiles/algr.dir/algorithm.cpp.s
+.PHONY : algorithm.cpp.s
+
+leetcodeTest.o: leetcodeTest.cpp.o
+
 .PHONY : leetcodeTest.o
 
-# target to preprocess a source file
-leetcodeTest.i:
-	cd /home/pineapple/leet/leetcode/build && $(MAKE) $(MAKESILENT) -f bin/CMakeFiles/leet_test.dir/build.make bin/CMakeFiles/leet_test.dir/leetcodeTest.i
+# target to build an object file
+leetcodeTest.cpp.o:
+	cd /home/pineapple/leet/leetcode/build && $(MAKE) $(MAKESILENT) -f bin/CMakeFiles/leet_test.dir/build.make bin/CMakeFiles/leet_test.dir/leetcodeTest.cpp.o
+.PHONY : leetcodeTest.cpp.o
+
+leetcodeTest.i: leetcodeTest.cpp.i
+
 .PHONY : leetcodeTest.i
 
-# target to generate assembly for a file
-leetcodeTest.s:
-	cd /home/pineapple/leet/leetcode/build && $(MAKE) $(MAKESILENT) -f bin/CMakeFiles/leet_test.dir/build.make bin/CMakeFiles/leet_test.dir/leetcodeTest.s
+# target to preprocess a source file
+leetcodeTest.cpp.i:
+	cd /home/pineapple/leet/leetcode/build && $(MAKE) $(MAKESILENT) -f bin/CMakeFiles/leet_test.dir/build.make bin/CMakeFiles/leet_test.dir/leetcodeTest.cpp.i
+.PHONY : leetcodeTest.cpp.i
+
+leetcodeTest.s: leetcodeTest.cpp.s
+
 .PHONY : leetcodeTest.s
+
+# target to generate assembly for a file
+leetcodeTest.cpp.s:
+	cd /home/pineapple/leet/leetcode/build && $(MAKE) $(MAKESILENT) -f bin/CMakeFiles/leet_test.dir/build.make bin/CMakeFiles/leet_test.dir/leetcodeTest.cpp.s
+.PHONY : leetcodeTest.cpp.s
 
 # Help Target
 help:

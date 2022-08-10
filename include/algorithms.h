@@ -1,5 +1,6 @@
 #pragma once
 #include <time.h>
+#include <limits.h>
 #include <iostream>
 #include <vector>
 #include <list>
@@ -53,7 +54,7 @@ class Solution
 public:
 	// 1 
 	vector<int> twoSum(vector<int>& nums, int target) {
-		//²ÉÓÃ¹þÏ£±í£¬Ö±½ÓËÑË÷ÊÇ·ñ´æÔÚtarget-sumµÄÔªËØ
+		//ï¿½ï¿½ï¿½Ã¹ï¿½Ï£ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½target-sumï¿½ï¿½Ôªï¿½ï¿½
 		unordered_map<int, int> hashtable;
 		vector<int> res(2);
 		for (int i=0;i<nums.size();i++)
@@ -71,7 +72,7 @@ public:
 		}
 		return res;
 	}
-	//22 À¨ºÅÉú³É
+	//22 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	string s;
 	vector<string> vs;
 	vector<string> generateParenthesis(int n) {
@@ -88,12 +89,12 @@ public:
 		}
 		s.push_back('(');
 		stringTraceBack(n, left + 1, right);
-		s.pop_back();//popµÄ¿ÉÄÜÊÇÒ»¸öÓÒÀ¨ºÅ£¡
+		s.pop_back();//popï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å£ï¿½
 		if (right < left)
 		{
 			s.push_back(')');
-			stringTraceBack(n, left, right + 1);//Õâ»áÐÎ³ÉËÀÑ­»·Âð£¿
-			s.pop_back();//¼ÓÉÏÕâÒ»¾ä£¬¾Í¿ÉÒÔ±£Ö¤¸÷×ÔµÄpop¶ÔÓ¦µÄÊÇ¸÷×ÔµÄÀ¨ºÅ
+			stringTraceBack(n, left, right + 1);//ï¿½ï¿½ï¿½ï¿½Î³ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½
+			s.pop_back();//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ä£¬ï¿½Í¿ï¿½ï¿½Ô±ï¿½Ö¤ï¿½ï¿½ï¿½Ôµï¿½popï¿½ï¿½Ó¦ï¿½ï¿½ï¿½Ç¸ï¿½ï¿½Ôµï¿½ï¿½ï¿½ï¿½ï¿½
 		}
 	}
 	string fillString(string& s, int n)
@@ -111,7 +112,7 @@ public:
 		int l = 0;
 		int r = nums.size() - 1;
 		int mid = 0;
-		//Ê×ÏÈ²éÕÒ×ó²à
+		//ï¿½ï¿½ï¿½È²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		while (l <= r)
 		{
 			mid = l + (r - l) / 2;
@@ -150,7 +151,7 @@ public:
 		return res;
 	}
 
-	//35 ËÑË÷²åÈëÎ»ÖÃ
+	//35 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
 	int searchInsert(vector<int>& nums, int target) {
 		int l = 0;
 		int r = nums.size() - 1;
@@ -162,7 +163,7 @@ public:
 			else if (nums[mid] > target) r = mid - 1;
 			else if (nums[mid] < target)
 			{
-				if ((mid + 1) == nums.size() || nums[mid + 1] > target)  //·ÀÖ¹·ÃÎÊÔ½½ç
+				if ((mid + 1) == nums.size() || nums[mid + 1] > target)  //ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½
 				{
 					return mid + 1;
 				}
@@ -181,13 +182,13 @@ public:
 		while (i < nums.size())
 		{
 			thislen = max(thislen, i + nums[i]);
-			if (len == i)  //°üº¬ÁËlen>i>=(nums.size()-1)µÄÇé¿öÁË£¬ÒòÎª»áÑ­»·µ½×îºóÒ»²½È»ºó·µ»Ø×îÖÕµÄjmp
+			if (len == i)  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½len>i>=(nums.size()-1)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½Îªï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½È»ï¿½ó·µ»ï¿½ï¿½ï¿½ï¿½Õµï¿½jmp
 			{
 				if (i != nums.size() - 1)
 				{
 					++jmp;
 					len = thislen;
-					//if (len >= nums.size() - 1) break;//Èç¹û²»¼ÓÕâÒ»¾ä£¬¿ÉÄÜ»á³öÏÖ
+					//if (len >= nums.size() - 1) break;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ä£¬ï¿½ï¿½ï¿½Ü»ï¿½ï¿½ï¿½ï¿½
 				}
 				else break;
 			}
@@ -221,7 +222,7 @@ public:
 		permuteTraceBack(res, nums, pos + 1);
 	}
 
-	//53 ×î´ó×ÓÊý×éºÍ
+	//53 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	/*int maxSubArray(vector<int>& nums) {
 		return getMaxSubArray(nums, 0, nums.size() - 1).msum;
 	}
@@ -254,7 +255,7 @@ public:
 		res.msum = max(max(s1.msum, s2.msum), s1.rsum + s2.lsum);
 		return res;
 	}*/
-	//Ì°ÐÄ·¨
+	//Ì°ï¿½Ä·ï¿½
 	int maxSubArray(vector<int>& nums)
 	{
 		int res = INT_MIN;
@@ -320,7 +321,7 @@ public:
 		vector<vector<int>> pathres(m, vector<int>(n));
 		return uniquePathsRecur(pathres, m - 1, n - 1);
 	}
-	//ÆÕÍ¨ÄæÏòµÝ¹é
+	//ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½Ý¹ï¿½
 	int uniquePathsRecur(vector<vector<int>>& pathres, int m, int n)
 	{
 		if (m == 0 || n == 0)
@@ -352,11 +353,11 @@ public:
 
 	//70
 	//int climbStairs(int n) {
-	//	//×îÆÕÍ¨µÄì³²¨ÄÇÆõÊýÁÐµÝ¹é·½·¨
+	//	//ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ì³²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÝ¹é·½ï¿½ï¿½
 	//	/*if (n == 1) return 1;
 	//	else if (n == 2) return 2;
 	//	return climbStairs(n - 1) + climbStairs(n - 2);*/
-	//	//Ìí¼Ó±¸ÍüµÄ
+	//	//ï¿½ï¿½ï¿½Ó±ï¿½ï¿½ï¿½ï¿½ï¿½
 	//	int r1 = 1;
 	//	int r2 = 2;
 	//	int r3 = r1;
@@ -370,12 +371,12 @@ public:
 	//	return r3;
 	//}
 
-	//¶¯¹æ
+	//ï¿½ï¿½ï¿½ï¿½
 	int climbStairs(int n) {
 
 		/*
-		* Èç¹ûÊÇÒªÇó×ß¼¸²½¿ÉÒÔµ½´ïÂ¥¶¥
-			±³°üÄÚ·Å×ß¹ýµÄ²½Êý
+		* ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ß¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôµï¿½ï¿½ï¿½Â¥ï¿½ï¿½
+			ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ß¹ï¿½ï¿½Ä²ï¿½ï¿½ï¿½
 			res[j]=min(res[j],res[j-value[i]]+1);
 		
 		*/
@@ -383,10 +384,10 @@ public:
 		res[0] = 1;
 		for (int i = 0; i <= n; ++i)
 		{
-			//Èç¹ûÒªÇó×ß¼¸²½¿ÉÒÔµ½´ïÂ¥¶¥
+			//ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ß¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôµï¿½ï¿½ï¿½Â¥ï¿½ï¿½
 			/*if (i >= 1) res[i] = res[i - 1] + 1;
 			if (i >= 2) res[i] = min(res[i], res[i - 2] + 1);*/
-			//Çó·½°¸Êý
+			//ï¿½ó·½°ï¿½ï¿½ï¿½
 			if (i >= 1) res[i] += res[i - 1];
 			if (i >= 2) res[i] += res[i - 2];
 		}
@@ -394,9 +395,9 @@ public:
 	}
 
 
-	//74 ËÑË÷¶þÎ¬¾ØÕó
+	//74 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¬ï¿½ï¿½ï¿½ï¿½
 	bool searchMatrix(vector<vector<int>>& matrix, int target) {
-		//¶þ·Ö²éÕÒ·¨
+		//ï¿½ï¿½ï¿½Ö²ï¿½ï¿½Ò·ï¿½
 		//int hei = matrix.size();
 		//int wid = matrix[0].size();
 		//if (matrix.empty() || matrix[0].empty()) return false;
@@ -439,7 +440,7 @@ public:
 		//}
 		//return false;
 
-		//¶þ²æÊ÷·½·¨
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		/*if (matrix.empty()) return false;
 		pair<int, int> head;
 		head.first = 0;
@@ -458,7 +459,7 @@ public:
 		}
 		return false;*/
 
-		//ÐÐÁÐ²éÕÒ·¨  ÊäÈë  [[1]] 0
+		//ï¿½ï¿½ï¿½Ð²ï¿½ï¿½Ò·ï¿½  ï¿½ï¿½ï¿½ï¿½  [[1]] 0
 		/*if (matrix.empty()) return false;
 		pair<int, int> pos{ 0,0};
 		
@@ -476,7 +477,7 @@ public:
 		}
 		return false;*/
 
-		//¶þ·ÖÐÐÁÐ²éÕÒ·¨
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½Ò·ï¿½
 		if (matrix.empty()) return false;
 		pair<int, int> pos{ 0,0 };
 		int l = 0;
@@ -499,7 +500,7 @@ public:
 				}
 				return false;
 			}
-			else if (matrix[mid][0] > target)  //ÆäÊµÃ»±ØÒª¼Ó(mid - 1) >= 0£¬ÒòÎªÕâ¸öÌõ¼þÒÑ¾­°üº¬ÔÚÁËl<=rÖÐ
+			else if (matrix[mid][0] > target)  //ï¿½ï¿½ÊµÃ»ï¿½ï¿½Òªï¿½ï¿½(mid - 1) >= 0ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½l<=rï¿½ï¿½
 			{
 				r = mid - 1;
 			}
@@ -532,8 +533,8 @@ public:
 		combineTraceBack(res, path, n, k, pos + 1);
 	}
 
-	//78 ×Ó¼¯
-	//µÝ¹é·½Ê½
+	//78 ï¿½Ó¼ï¿½
+	//ï¿½Ý¹é·½Ê½
 	vector<vector<int>> subsets(vector<int>& nums)
 	{
 		vector<vector<int>> res;
@@ -541,7 +542,7 @@ public:
 		myTraceBack(res, nums, path, 0);
 		return res;
 	}
-	//¹Ù·½´ð°¸ µÝ¹é
+	//ï¿½Ù·ï¿½ï¿½ï¿½ ï¿½Ý¹ï¿½
 	// vector<int> v;
 	//vector<vector<int>> vs;
 	//void traceBack(vector<int>& nums, int n)
@@ -552,25 +553,25 @@ public:
 	//		return;
 	//	}
 	//	v.push_back(nums[n]);
-	//	traceBack(nums, n + 1);//Õâ¸öÏàµ±ÓÚµÚÒ»´Î³¢ÊÔ
+	//	traceBack(nums, n + 1);//ï¿½ï¿½ï¿½ï¿½àµ±ï¿½Úµï¿½Ò»ï¿½Î³ï¿½ï¿½ï¿½
 	//	v.pop_back();
-	//	traceBack(nums, n + 1);//pop³öÈ¥Ö®ºó£¬Õâ¸öÏàµ±ÓÚ¶ÔÏÂÒ»¸öÔªËØ½øÐÐ³¢ÊÔ
+	//	traceBack(nums, n + 1);//popï¿½ï¿½È¥Ö®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½àµ±ï¿½Ú¶ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½Ø½ï¿½ï¿½Ð³ï¿½ï¿½ï¿½
 	//}
 	void myTraceBack(vector<vector<int>>& res, vector<int>& nums, vector<int> p, int start)
 	{
 		if (start == nums.size()) return;
-		//·ÇÒýÓÃ+±éÀú
-		while (start < nums.size())  //ÕâÀïÊ¹ÓÃ´óÓÚµÈÓÚÊÇÎªÁË·Å×îºóÒ»¸öÔªËØ½øpÖ®ºó»¹ÓÐ»ú»á½øÈëÏÂÒ»µÝ¹éµÄtraceback,È»ºó×ßifÌõ¼þ·µ»Ø£¬Èç¹û²»·ÅµÄ»°£¬×îºóÒ»¸öÔªËØÓÀÔ¶ÏÔÏÖ²»³öÀ´
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½+ï¿½ï¿½ï¿½ï¿½
+		while (start < nums.size())  //ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã´ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Ë·ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½Ø½ï¿½pÖ®ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Ý¹ï¿½ï¿½traceback,È»ï¿½ï¿½ï¿½ï¿½ifï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÅµÄ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Ö²ï¿½ï¿½ï¿½ï¿½ï¿½
 		{
 			p.push_back(nums[start]);
-			//ÏÂÁ½¸ö²½ÖèµÄË³ÐòÒ»¶¨×¢Òâ£¬¼ÈÈ»Ê¹ÓÃÁËÒýÓÃ·½Ê½£¬ÕâÀïpµÄÔªËØÊÇ´ø²»³öÀ´µÄ£¬Òò´ËÖ»ÄÜÔÚtracebackº¯ÊýÖ®Ç°push
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½Ò»ï¿½ï¿½×¢ï¿½â£¬ï¿½ï¿½È»Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã·ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½pï¿½ï¿½Ôªï¿½ï¿½ï¿½Ç´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½tracebackï¿½ï¿½ï¿½ï¿½Ö®Ç°push
 			res.push_back(p);
 			myTraceBack(res, nums, p, ++start);
 
 			p.pop_back();
 		}
 	}
-	//×Ô¼ºÐ´µÄ
+	//ï¿½Ô¼ï¿½Ð´ï¿½ï¿½
 	/*vector<vector<int>> subsets(vector<int>& nums) {
 		vector<vector<int>> res;
 		vector<int> path;
@@ -610,9 +611,9 @@ public:
 	//		return;
 	//	}
 	//	v.push_back(nums[start]);
-	//	traceBackWithDup(false, nums, ++start);//Éî¶È±éÀú//ÎªÅäºÏÏÂÃæÊ¹ÓÃstart£¬ÕâÀï²ÉÓÃ++¶ø²»²ÉÓÃstart+1
+	//	traceBackWithDup(false, nums, ++start);//ï¿½ï¿½È±ï¿½ï¿½ï¿½//Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½startï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½++ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½start+1
 	//	v.pop_back();
-	//	//Ó¦¸ÃÕÒµ½ÏÂÒ»¸ö²»ÖØ¸´ÔªËØÔÙµÝ¹é£¬ÒÔÏÂ´úÂë»á³öÏÖ 2223ÖÐ£¬startÖ¸ÏòµÚÒ»¸ö2Ê±ºòµÄÇé¿ö£¬start+1Ã»ÓÐÅÐ¶Ïµ½3¾ÍÍË³öÁË
+	//	//Ó¦ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½Ôªï¿½ï¿½ï¿½ÙµÝ¹é£¬ï¿½ï¿½ï¿½Â´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2223ï¿½Ð£ï¿½startÖ¸ï¿½ï¿½ï¿½Ò»ï¿½ï¿½2Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½start+1Ã»ï¿½ï¿½ï¿½Ð¶Ïµï¿½3ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½
 	//	/*if (!((start + 1) < nums.size() && nums[start] == nums[start + 1]))
 	//	{
 	//		traceBackWithDup(true, nums, start + 1);
@@ -621,11 +622,11 @@ public:
 	//	{
 	//		++start;
 	//	}
-	//	//Ìø³öÑ­»·µÄÓÐÁ½ÖÖÇé¿ö£¬Ò»ÖÖÊÇÒÑ¾­±éÀúµ½ÁË²»ÖØ¸´µÄÔªËØ£¬ÁíÒ»ÖÖÊÇÒÑ¾­µ½´ïÁËÊý×é×îÄ©Î²¶¼Ã»ÓÐ²»ÖØ¸´µÄÔªËØ£¬ÕâÁ½ÖÖÇé¿ö¶¼¿ÉÒÔÖ±½Ó½øÈëÏÂÒ»´ÎµÝ¹é£¬µÚ¶þÖÖÇé¿ö»á°ÑÉÏÒ»²ãµÄÍÆÈëºó·µ»Ø£¬µÚÒ»ÖÖÇé¿öÔò¼ÌÐøµÝ¹é
+	//	//ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë²ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½Ôªï¿½Ø£ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä©Î²ï¿½ï¿½Ã»ï¿½Ð²ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½Ôªï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ÎµÝ¹é£¬ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó·µ»Ø£ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¹ï¿½
 	//	traceBackWithDup(true, nums, start);
 	//}
 	
-	//¹Ù·½´ð°¸
+	//ï¿½Ù·ï¿½ï¿½ï¿½
 	vector<int> t;
 	vector<vector<int>> ans;
 	void dfs(bool choosePre, int cur, vector<int>& nums) {
@@ -648,7 +649,7 @@ public:
 	}
 
 	//100
-	//µü´ú
+	//ï¿½ï¿½ï¿½ï¿½
 	/*bool isSameTree(TreeNode* p, TreeNode* q) {
 		if (p == nullptr && q == nullptr) return true;
 		else if ((p == nullptr && q != nullptr) || (p != nullptr && q == nullptr)) return false;
@@ -656,7 +657,7 @@ public:
 		if (isSameTree(p->left, q->left) && isSameTree(q->right, p->right)) return true;
 		else return false;
 	}*/
-	//µÝ¹é
+	//ï¿½Ý¹ï¿½
 	bool isSameTree(TreeNode* p, TreeNode* q) {
 		stack<TreeNode*> stk;
 		stk.push(p);
@@ -678,7 +679,7 @@ public:
 	}
 
 	//101
-	//µü´ú·¨
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	/*bool isSymmetric(TreeNode* root) {
 		if (root == nullptr) return true;
  		return isSymmetricRec(root->left, root->right);
@@ -737,7 +738,7 @@ public:
 	//104
 	
 	int maxDepth(TreeNode* root) {
-		//¾«¼òµÝ¹é
+		//ï¿½ï¿½ï¿½ï¿½Ý¹ï¿½
 		/*if (root == nullptr) return 0;
 		return max(maxDepth(root->left), maxDepth(root->right)) + 1;*/
 		queue<TreeNode*> que;
@@ -790,10 +791,10 @@ public:
 		if (root == nullptr) return true;
 		
 		/*
-			Èç¹û×ó×ÓÊ÷ºÍÓÒ×ÓÊ÷ÖÐÓÐÒ»¸ö²»ÊÇÆ½ºâÊ÷£¬ÔòÖ±½Ó·µ»Øfalse
-			¼ÆËã×óÓÒ×ÓÊ÷¸ß¶È
-			Èç¹û¸ß¶È²î´óÓÚ1·µ»Øfalse
-			Èç¹û¸ß¶È²îÐ¡ÓÚ1·µ»Øtrue£»
+			ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó·ï¿½ï¿½ï¿½false
+			ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¶ï¿½
+			ï¿½ï¿½ï¿½ï¿½ß¶È²ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½false
+			ï¿½ï¿½ï¿½ï¿½ß¶È²ï¿½Ð¡ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½trueï¿½ï¿½
 		*/
 
 		if (!isBalanced(root->left) || !isBalanced(root->right)) return false;
@@ -831,7 +832,7 @@ public:
 		}
 		return minlevel;
 	}*/
-	//µÝ¹é
+	//ï¿½Ý¹ï¿½
 	int minDepth(TreeNode* root)
 	{
 		if (root == nullptr) return 0;
@@ -842,7 +843,7 @@ public:
 	}
 
 	//112
-	//µÝ¹é
+	//ï¿½Ý¹ï¿½
 	bool hasPathSum(TreeNode* root, int targetSum)
 	{
 		return hasPathSumRec(root, 0, targetSum);
@@ -857,7 +858,7 @@ public:
 		if (hasPathSumRec(nnode->right, sum, targetSum)) return true;
 		return false;
 	}
-	//µü´ú
+	//ï¿½ï¿½ï¿½ï¿½
 	/*bool hasPathSum(TreeNode* root, int targetSum) {
 		if (root == nullptr) return false;
 		stack<pair<TreeNode*, int>> stk;
@@ -915,7 +916,7 @@ public:
 		int i = 1;
 		for (; i < prices.size(); ++i)
 		{
-			buy[i] = max(buy[i - 1], 0 - prices[i]);  ///ÆäÊµ¾ÍÊÇÔÚÕÒ×îÐ¡Öµ
+			buy[i] = max(buy[i - 1], 0 - prices[i]);  ///ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡Öµ
 			sell[i] = max(sell[i - 1], buy[i - 1] + prices[i]);
 		}
 		return sell.back();
@@ -938,12 +939,12 @@ public:
 
 	//139
 	/*
-	* ±³°üÄÚ´æ·ÅµÄ£ºtrue/false
-	* ×Ö·û´®³¤¶ÈÎªiÊ±£¬ÊÇ·ñ¿ÉÒÔ×°ÏÂ×Ö·û´®
-	* µÝÍÆÊ½£º
+	* ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ÅµÄ£ï¿½true/false
+	* ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªiÊ±ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+	* ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½
 	*	res[i]=res[i]||(res[i-str[j].size()]&&comp(s[i-str[j].size()],s[i],str[j]));
-	* ³õÊ¼»¯£º
-	*	res[0]=true;ÆäÓàÎªfalse
+	* ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
+	*	res[0]=true;ï¿½ï¿½ï¿½ï¿½Îªfalse
 	*/
 	bool wordBreak(string s, vector<string>& wordDict) {
 		vector<bool> res(s.size() + 1, false);
@@ -969,8 +970,8 @@ public:
 		return true;
 	}
 
-	//141 »·ÐÎÁ´±í
-	//¿ìÂýÖ¸Õë·½·¨
+	//141 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ë·½ï¿½ï¿½
 	/*bool hasCycle(ListNode* head) {
 		if (head == nullptr || head->next == nullptr) return false;
 		ListNode* snode = head;
@@ -983,7 +984,7 @@ public:
 		}
 		return true;
 	}*/
-	//¹þÏ£±í·½·¨
+	//ï¿½ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	bool hasCycle(ListNode* head)
 	{
 		if (head == nullptr) return false;
@@ -1000,7 +1001,7 @@ public:
 	ListNode* detectCycle(ListNode* head) {
 		if (head == nullptr) return nullptr;
 		if (head->next == nullptr) return nullptr;
-		//¶¨Òå¿ìÂýÖ¸ÕëÏÈ·ÃÎÊ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½
 		ListNode* slow = head;
 		ListNode* fast = head;
 		char flag = 0;
@@ -1022,12 +1023,12 @@ public:
 		return slow;
 	}
 
-	//162 Ñ°ÕÒ·åÖµ
+	//162 Ñ°ï¿½Ò·ï¿½Öµ
 	int findPeakElement(vector<int>& nums) {
 		//int n = nums.size();
 		//if (n == 1) return 0;
 
-		//// ÏÈÌØÅÐÁ½±ßÇé¿ö
+		//// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		//if (nums[0] > nums[1]) return 0;
 		//if (nums[n - 1] > nums[n - 2]) return n - 1;
 
@@ -1035,16 +1036,16 @@ public:
 		//while (l <= r) {
 		//	int mid = (l + r) / 2;
 
-		//	// µ±Ç°Îª·åÖµ
+		//	// ï¿½ï¿½Ç°Îªï¿½ï¿½Öµ
 		//	if (mid >= 1 && mid < n - 1 && nums[mid] > nums[mid - 1] && nums[mid] > nums[mid + 1]) {
 		//		return mid;
 		//	}
 		//	else if (mid >= 1 && nums[mid] < nums[mid - 1]) {
-		//		// ·åÖµÔÚ mid ×ó²à
+		//		// ï¿½ï¿½Öµï¿½ï¿½ mid ï¿½ï¿½ï¿½
 		//		r = mid - 1;
 		//	}
 		//	else if (mid < n - 1 && nums[mid] < nums[mid + 1]) {
-		//		// ·åÖµÔÚ mid ÓÒ²à
+		//		// ï¿½ï¿½Öµï¿½ï¿½ mid ï¿½Ò²ï¿½
 		//		l = mid + 1;
 		//	}
 		//}
@@ -1068,7 +1069,7 @@ public:
 		{
 			return mid;
 		}
-		else if (mid > 0 && nums[mid - 1] > nums[mid])//·åÖµÒ»¶¨ÔÚ×ó²à
+		else if (mid > 0 && nums[mid - 1] > nums[mid])//ï¿½ï¿½ÖµÒ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		{
 			res = findPeakRecursively(nums, l, mid - 1);
 			if (res) return res;
@@ -1080,7 +1081,7 @@ public:
 		}
 		return -1;
 	}
-	//169 ¶àÊýÔªËØ
+	//169 ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
 	int majorityElement(vector<int>& nums) {
 		return findMajority(nums, 0, nums.size() - 1);
 	}
@@ -1092,7 +1093,7 @@ public:
 		int rightMaj = findMajority(nums, mid + 1, r);
 		if (countMaj(nums, leftMaj, l, r) > (r - l) / 2) return leftMaj;
 		else if (countMaj(nums, rightMaj, l, r) > (r - l) / 2) return rightMaj;
-		return -1;//ÔÚÕâ¸ö×ÓÇø¼äÄÚ£¬Õâ¸öÊý²¢²»ÊÇ¶àÊý£¬¼ÙÈçÕæµÄÊÇ¶àÊýÒ²ÊÇÔÚÆäËûÇø¼ä£¬ËùÒÔ¿ÉÒÔ·ÅÐÄ´óµ¨µØ·µ»Ø-1
+		return -1;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¶ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ä£¬ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½Ô·ï¿½ï¿½Ä´óµ¨µØ·ï¿½ï¿½ï¿½-1
 		
 	}
 	int countMaj(vector<int>& nums, int target, int l, int r)
@@ -1106,7 +1107,7 @@ public:
 	}
 
 	//200
-	//Éî¶ÈÓÅÏÈ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	//int numIslands(vector<vector<char>>& grid) {
 	//	int res = 0;
 	//	for (int i = 0; i < grid.size(); i++)
@@ -1136,13 +1137,13 @@ public:
 	//	if (a2 < grid[0].size() - 1 && grid[a1][a2 + 1] == '1') isIsland(grid, a1, a2 + 1);  //right
 	//	return;
 	//}
-	//²¢²é¼¯
+	//ï¿½ï¿½ï¿½é¼¯
 	int numIslands(vector<vector<char>>& grid)
 	{
 
 	}
 
-	//206 ·´×ªÁ´±í
+	//206 ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½
 	ListNode* reverseList(ListNode* head) {
 		if (head == nullptr || head->next == nullptr)
 		{
@@ -1153,7 +1154,7 @@ public:
 		head->next = nullptr;
 		return newHead;
 	}
-	//209 ³¤¶È×îÐ¡µÄ×ÓÊý×é
+	//209 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	int minSubArrayLen(int target, vector<int>& nums) {
 		if (nums.empty()) return 0;
 		int l = 0; int r = 0;
@@ -1171,7 +1172,7 @@ public:
 		}
 		return (min_l == (nums.size() + 1)) ? 0 : min_l;
 
-		//Ì«¶à¿ÓÁË
+		//Ì«ï¿½ï¿½ï¿½ï¿½ï¿½
 		/*vector<int>::iterator it1 = nums.begin();
 		vector<int>::iterator it2 = nums.begin();
 		int len = 1;
@@ -1197,11 +1198,11 @@ public:
 	}
 	//215
 	int findKthLargest(vector<int>& nums, int k) {
-		//·ÖÖÎ·¨¹é²¢ÅÅÐò
+		//ï¿½ï¿½ï¿½Î·ï¿½ï¿½é²¢ï¿½ï¿½ï¿½ï¿½
 		vector<int> res = sortNums(nums, 0, nums.size() - 1);
 		return res[k - 1];
 	}
-	//¹é²¢ÅÅÐò
+	//ï¿½é²¢ï¿½ï¿½ï¿½ï¿½
 	vector<int> sortNums(vector<int>& nums, int l, int r)
 	{
 		if (l == r) return vector<int>{nums[l]};
@@ -1213,7 +1214,7 @@ public:
 		int rl = 0;
 		while (!(ll >= leftNums.size() && rl >= rightNums.size()))
 		{
-			if ((ll < leftNums.size())&&(rl >= rightNums.size()|| (leftNums[ll] >= rightNums[rl])))  //Á½ÖÖÇé¿öÏÂ¶¼ÐèÒªÈÃ×ó±ßµÄË÷Òý´¦ÔÚÊý×éÄÚ²¿
+			if ((ll < leftNums.size())&&(rl >= rightNums.size()|| (leftNums[ll] >= rightNums[rl])))  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¶ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½
 			{
 				res.push_back(leftNums[ll]);
 				++ll;
@@ -1230,8 +1231,8 @@ public:
 	//221
 	int maximalSquare(vector<vector<char>>& matrix) {
 		char maxSquare = 0;
-		vector<vector<char>> dp(matrix.size(), vector<char>(matrix[0].size(), 0));// matrix²»ÊÇ·½Õó£¡ÕâÀï¸ø¶¨´óÐ¡µÄÊ±ºòÒª×¢Òâ£¡
-		//¸øÊ×ÐÐÊ×ÁÐ¸³Öµ
+		vector<vector<char>> dp(matrix.size(), vector<char>(matrix[0].size(), 0));// matrixï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½Ê±ï¿½ï¿½Òª×¢ï¿½â£¡
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸ï¿½Öµ
 		for (int i = 0; i < matrix.size(); ++i)
 		{
 			for (int j = 0; j < matrix[0].size(); ++j)
@@ -1285,8 +1286,8 @@ public:
 		}
 	}
 
-	//226  ·­×ª¶þ²æÊ÷
-	//µÝ¹é
+	//226  ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//ï¿½Ý¹ï¿½
 	/*TreeNode* invertTree(TreeNode* root) {
 		if (root == nullptr) return nullptr;
 		swap(root->left, root->right);
@@ -1294,7 +1295,7 @@ public:
 		invertTree(root->right);
 		return root;
 	}*/
-	//µÝ¹éµÄÖÐÐò±éÀúÐèÒª×¢ÒâµÄµã£º
+	//ï¿½Ý¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òª×¢ï¿½ï¿½Äµã£º
 	/*TreeNode* invertTree(TreeNode* root) {
 		if (root == nullptr) return nullptr;
 		invertTree(root->left);
@@ -1302,7 +1303,7 @@ public:
 		invertTree(root->left);
 		return root;
 	}*/
-	//µü´ú
+	//ï¿½ï¿½ï¿½ï¿½
 	/*TreeNode* invertTree(TreeNode* root)
 	{
 		stack<TreeNode*> stk;
@@ -1350,7 +1351,7 @@ public:
 	}
 
 	//257
-	//µÝ¹é
+	//ï¿½Ý¹ï¿½
 	/*vector<string> binaryTreePaths(TreeNode* root) {
 		if (root->left == nullptr && root->right == nullptr) return vector<string> {to_string(root->val)};
 		if (root->left == nullptr)
@@ -1383,7 +1384,7 @@ public:
 	
 
 	//279
-	//²»´ø±¸Íü¸´ÔÓ¶È¹ý´ó
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¶È¹ï¿½ï¿½ï¿½
 	/*int numSquares(int n) {
 		return numSquaresRec(n);
 	}
@@ -1397,7 +1398,7 @@ public:
 		}
 		return minlen + 1;
 	}*/
-	//´ø±¸ÍüÂ¼
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
 	/*int numSquares(int n) {
 		vector<int> res(n + 1);
 		return numSquaresRec(res, n);
@@ -1416,17 +1417,17 @@ public:
 	int numSquares(int n)
 	{
 		/*
-		* ±³°üÄÚ´æ·ÅÔªËØ£ºÒªÌîÂúÈÝÁ¿ÎªjµÄ±³°ü¿Õ¼ä£¬×îÉÙÐèÒª¼¸¸öÍêÈ«Æ½·½Êý£»
-		* µÝÍÆÊ½£º
+		* ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½Ôªï¿½Ø£ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªjï¿½Ä±ï¿½ï¿½ï¿½ï¿½Õ¼ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È«Æ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		* ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½
 		*	res[j]=min(res[j],res[j-(i*i)]+1);
-		* ³õÊ¼»¯£º
-		*	res[0]=0;ÆäÓàµÄ¶¼ÉèÖÃÎªÒ»¸ö´óÖµ
+		* ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
+		*	res[0]=0;ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÒ»ï¿½ï¿½ï¿½ï¿½Öµ
 		*/
 		vector<int> res(n + 1, INT_MAX);
 		res[0] = 0;
-		for (int i = 0; i <= n; ++i)    //ÏÈ±éÀú±³°ü
+		for (int i = 0; i <= n; ++i)    //ï¿½È±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		{
-			for (int j = 1; (j * j) <= n; ++j)        //ÔÙ±éÀúÔªËØ£¬±éÀúµ½Æ½·½Ð¡ÓÚnµÄÍêÈ«Æ½·½Êý
+			for (int j = 1; (j * j) <= n; ++j)        //ï¿½Ù±ï¿½ï¿½ï¿½Ôªï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ½ï¿½ï¿½Ð¡ï¿½ï¿½nï¿½ï¿½ï¿½ï¿½È«Æ½ï¿½ï¿½ï¿½ï¿½
 			{
 				if (i >= (j * j))
 				{
@@ -1441,12 +1442,12 @@ public:
 	//322
 	int coinChange(vector<int>& coins, int amount) {
 		/*
-			±³°üÄÚ´æ·ÅµÄÔªËØ£º´Õ³É½ð¶îjËùÐèÒªµÄ×îÉÙµÄÓ²±Ò¸öÊý£»
-			µÝÍÆÊ½£º
-				´Õ³É½ð¶îjËùÐèµÄ×îÉÙµÄÓ²±Ò¸öÊý=min{²»¿¼ÂÇÐÂ¼ÓÈëµÄÃæ¶îµÄÊ±ºò£¬´Õ³ÉjËùÐèÒªµÄ×îÉÙµÄÓ²±ÒÊý£»
-											¿¼ÂÇÐÂ¼ÓÈëµÄÃæ¶î£¬¼ÓÈëÕâÒ»Ã¶Ó²±ÒÇ°ËùÐèÒªµÄ×îÉÙµÄÓ²±ÒÊý+1}
-			³õÊ¼»¯£º
-				ÖØµãÊÇ¶ÔµÚÒ»¸öÃæ¶îµÄ±éÀú³õÊ¼»¯¡£Ê×ÏÈdp[0]=0£¬ÒòÎª´Õ³ÉÃæ¶îÎª0µÄÓ²±Ò¸öÊýÎª0£¬Æä´Î£¬jÎªcoins[i]µÄ±¶ÊýµÄÊ±ºò£¬
+			ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½Åµï¿½Ôªï¿½Ø£ï¿½ï¿½Õ³É½ï¿½ï¿½jï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ùµï¿½Ó²ï¿½Ò¸ï¿½ï¿½ï¿½ï¿½ï¿½
+			ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½
+				ï¿½Õ³É½ï¿½ï¿½jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ùµï¿½Ó²ï¿½Ò¸ï¿½ï¿½ï¿½=min{ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ò£¬´Õ³ï¿½jï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ùµï¿½Ó²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+											ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½î£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ã¶Ó²ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ùµï¿½Ó²ï¿½ï¿½ï¿½ï¿½+1}
+			ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
+				ï¿½Øµï¿½ï¿½Ç¶Ôµï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½dp[0]=0ï¿½ï¿½ï¿½ï¿½Îªï¿½Õ³ï¿½ï¿½ï¿½ï¿½Îª0ï¿½ï¿½Ó²ï¿½Ò¸ï¿½ï¿½ï¿½Îª0ï¿½ï¿½ï¿½ï¿½Î£ï¿½jÎªcoins[i]ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 		
 		
 		
@@ -1488,7 +1489,7 @@ public:
 		return maxthis;
 	}
 
-	//344 ·´×ª×Ö·û´®
+	//344 ï¿½ï¿½×ªï¿½Ö·ï¿½ï¿½ï¿½
 	void reverseString(vector<char>& s) {
 		int l = 0;
 		int r = s.size() - 1;
@@ -1522,10 +1523,10 @@ public:
 	//376
 	int wiggleMaxLength(vector<int>& nums) {
 		int len = nums.size();
-		int flag = 0;//±ê¼ÇÉÏÉýÏÂ½µ
+		int flag = 0;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½
 		for (int i = 0; i < nums.size(); ++i)
 		{
-			if (flag == -1)//ÏÂ½µ
+			if (flag == -1)//ï¿½Â½ï¿½
 			{
 				if (nums[i] > nums[i - 1]) flag = 1;
 				else
@@ -1533,7 +1534,7 @@ public:
 					--len;
 				}
 			}
-			else if (flag == 1) //ÉÏÉý
+			else if (flag == 1) //ï¿½ï¿½ï¿½ï¿½
 			{
 				if (nums[i] < nums[i - 1]) flag = -1;
 				else
@@ -1586,7 +1587,7 @@ public:
 			{
 				root = stk.top();
 				stk.pop();
-				//´¦Àí
+				//ï¿½ï¿½ï¿½ï¿½
 				if (root->left && (!root->left && !root->right))
 				{
 					res += root->left->val;
@@ -1602,7 +1603,7 @@ public:
 		for (auto a : nums) sum_all += a;
 		//return canParRec(nums, 0, 0, sum_all);
 
-		//±³°ü
+		//ï¿½ï¿½ï¿½ï¿½
 		if (sum_all % 2 == 1) return false;
 		int tgt = sum_all / 2;
 		vector<int> res(tgt + 1, 0);
@@ -1629,7 +1630,7 @@ public:
 		}
 		return false;
 	}
-	//ÆÕÍ¨»ØËÝ·¨ ³¬Ê±
+	//ï¿½ï¿½Í¨ï¿½ï¿½ï¿½Ý·ï¿½ ï¿½ï¿½Ê±
 	bool canParRec(vector<int>& nums, int idx, int sum, int sum_all)
 	{
 		if (idx >= nums.size()) return false;
@@ -1669,7 +1670,7 @@ public:
 		for (int i = 0; i < strs.size(); ++i)
 		{
 			pair<int, int> p = countMNfromStr(strs[i]);
-			//Á½²ãµ¹Ðò±éÀú¶þÎ¬Êý×é
+			//ï¿½ï¿½ï¿½ãµ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¬ï¿½ï¿½ï¿½ï¿½
 			for (int j = m; j >= 0; --j)
 			{
 				for (int k = n; k >= 0; --k)
@@ -1716,7 +1717,7 @@ public:
 		res[0] = 1;
 		for (int i = 0; i < nums.size(); ++i)
 		{
-			for (int j = tgt; j >= nums[i]; --j)  //ÕâÀï±éÀúµ½nums[i]
+			for (int j = tgt; j >= nums[i]; --j)  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½nums[i]
 			{
 				res[j] += res[j - nums[i]];
 			}
@@ -1810,7 +1811,7 @@ public:
 
 	//559
 	int maxDepth(Node* root) {
-		//µÝ¹é
+		//ï¿½Ý¹ï¿½
 		/*if (root == nullptr) return 0;
 		int maxdep = 0;
 		for (int i = 0; i < root->children.size(); ++i)
@@ -1818,7 +1819,7 @@ public:
 			maxdep = max(maxdep, maxDepth(root->children[i]));
 		}
 		return maxdep + 1;*/
-		//·ÇµÝ¹é
+		//ï¿½ÇµÝ¹ï¿½
 		queue<Node*> que;
 		if (root != nullptr) que.push(root);
 		int dep = 0;
@@ -1839,7 +1840,7 @@ public:
 		return dep;
 	}
 
-	//589 N²æÊ÷
+	//589 Nï¿½ï¿½ï¿½ï¿½
 	vector<int> preorder(Node* root) {
 		stack<Node*> stk;
 		if (root != nullptr) stk.push(root);
@@ -1895,7 +1896,7 @@ public:
 		return res;
 	}
 
-	//704 ¶þ·Ö²éÕÒ
+	//704 ï¿½ï¿½ï¿½Ö²ï¿½ï¿½ï¿½
 	int search(vector<int>& nums, int target) {
 		int l = 0;
 		int r = nums.size() - 1;
@@ -1924,10 +1925,10 @@ public:
 		//int r = nums.size() - 1;
 		//while (l <= r)
 		//{
-		//	//ÔÚ×óÓÒÇø¼ä·¶Î§ÄÚ
+		//	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ä·¶Î§ï¿½ï¿½
 		//	if (nums[l] < target && target < nums[r])
 		//	{
-		//		if (nums[l + (r - l) / 2] > target)  //ËµÃ÷ÔÚÖÐ¼ä±êÇ©µÄ×ó±ß
+		//		if (nums[l + (r - l) / 2] > target)  //Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ð¼ï¿½ï¿½Ç©ï¿½ï¿½ï¿½ï¿½ï¿½
 		//		{
 		//			r = l + (r - l) / 2;
 		//		}
@@ -2001,8 +2002,8 @@ public:
 				poss.pop();
 				if (visited.count(start))
 				{
-					if (poss.empty()) break;  //Èç¹ûËùÓÐµÄ½Úµã¶¼ÒÑ·ÃÎÊ¹ý£¬ÇÒÎÞÐÂ½Úµã¿É·ÃÎÊ£¬Ôò½áÊøÑ­»·
-					else continue;    //·ÃÎÊ¹ý´Ë½Úµã£¬ÔòÌø¹ý±¾Ñ­»·£¬Ö±½Ó½øÈëÏÂÒ»ÂÖ£»
+					if (poss.empty()) break;  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ½Úµã¶¼ï¿½Ñ·ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½Úµï¿½É·ï¿½ï¿½Ê£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½
+					else continue;    //ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Ë½Úµã£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Ö£ï¿½
 				}
 				visited.insert(start);
 				for (int i = 0; i < 4; ++i)
@@ -2039,7 +2040,7 @@ public:
 	}
 
 
-	//881 ¾ÈÉúÍ§
+	//881 ï¿½ï¿½ï¿½ï¿½Í§
 	int numRescueBoats(vector<int>& people, int limit) {
 		sort(people.begin(), people.end());
 		int boats = 0;
@@ -2058,7 +2059,7 @@ public:
 	}
 
 	//938
-	//µÝ¹é
+	//ï¿½Ý¹ï¿½
 	int rangeSumBST(TreeNode* root, int low, int high) {
 		int res = recursivelySum(root, low, high);
 		return res;
@@ -2077,7 +2078,7 @@ public:
 	}
 
 	//1005
-	//×îºÃµÄ·½·¨ÊÇÓÃ¹þÏ£Á´±í
+	//ï¿½ï¿½ÃµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¹ï¿½Ï£ï¿½ï¿½ï¿½ï¿½
 	int largestSumAfterKNegations(vector<int>& nums, int k) {
 		int res = 0;
 		for (; k >= 0; --k)
@@ -2133,7 +2134,7 @@ public:
 		int len = 0;
 		int l = 0;
 		int r = 0;
-		//×ß³öÒ»¸ö»¬¶¯´°¿Ú
+		//ï¿½ß³ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		do {
 			if (s[r] == 'a' || s[r] == 'e' || s[r] == 'i' || s[r] == 'o' || s[r] == 'u')
 			{
@@ -2142,7 +2143,7 @@ public:
 			r++;
 		} while (r < k);
 		max_len = max(max_len, len);
-		//´ËÊ±lÓërµÄ¾àÀëÒÑ¾­³ÉÎªÁËk
+		//ï¿½ï¿½Ê±lï¿½ï¿½rï¿½Ä¾ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½Îªï¿½ï¿½k
 		while (r < s.size())
 		{
 			if (s[r] == 'a' || s[r] == 'e' || s[r] == 'i' || s[r] == 'o' || s[r] == 'u')
@@ -2196,14 +2197,14 @@ public:
 			return nnode->val;
 		}
 	}
-	//ÒªÍê³É¹¦ÄÜÓÐ ÏÈÅÐ¶ÏÊÇ·ñÒÑ¾­´æÔÚ¶ÔÓ¦¼üÖµ£¬Èç¹ûÒÑ¾­´æÔÚ¾Í½«ÆäÎ»ÖÃÌáµ½Í·²¿²¢ÐÞ¸Ä¼üÖµ
-	//·ñÔòÆä´ÎÅÐ¶ÏÊÇ·ñ³¬³ö»º´æÈÝÁ¿£¬³¬³ö½øÐÐÖð³ö²Ù×÷ºóÔÙÌí¼ÓÐÂµÄ½Úµãµ½¶ÓÍ·
+	//Òªï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½Ó¦ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Ú¾Í½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½áµ½Í·ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸Ä¼ï¿½Öµ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Ç·ñ³¬³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÂµÄ½Úµãµ½ï¿½ï¿½Í·
 	void put(int key, int value) {
-		if (hashlist.find(key) != hashlist.end()) //ÕÒµ½ÁË
+		if (hashlist.find(key) != hashlist.end()) //ï¿½Òµï¿½ï¿½ï¿½
 		{
-			//ÐÞ¸Ä¼üÖµ
+			//ï¿½Þ¸Ä¼ï¿½Öµ
 			hashlist[key]->val = value;
-			//½«½ÚµãÌáµ½¶ÓÊ×
+			//ï¿½ï¿½ï¿½Úµï¿½ï¿½áµ½ï¿½ï¿½ï¿½ï¿½
 			biListNode* nnode = hashlist[key];
 			nnode->prev->next = nnode->next;
 			nnode->next->prev = nnode->prev;
@@ -2214,9 +2215,9 @@ public:
 		}
 		else
 		{
-			if (hashlist.size() == size)   //Ã»ÕÒµ½£¬µ«ÊÇÔ½½çÁË
+			if (hashlist.size() == size)   //Ã»ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½ï¿½
 			{
-				//Öð³ö²Ù×÷
+				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				hashlist.erase(hashlist.find(tail->prev->key));
 				biListNode* nnode = tail->prev;
 				tail->prev = tail->prev->prev;
@@ -2224,7 +2225,7 @@ public:
 				delete nnode;
 				nnode = nullptr;
 			}
-			//Ö±½ÓÔÚ¶ÓÊ×´´½¨ÐÂ½Úµã
+			//Ö±ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½×´ï¿½ï¿½ï¿½ï¿½Â½Úµï¿½
 			biListNode* nnode = new biListNode(value, key, head, head->next);
 			head->next->prev = nnode;
 			head->next = nnode;
