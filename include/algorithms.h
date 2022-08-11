@@ -1106,6 +1106,19 @@ public:
 		return count;
 	}
 
+	//198
+	int rob(vector<int>& nums) {
+		if (nums.size()==1) return nums[0];
+		if (nums.size()==2) return max(nums[0],nums[1]);
+		vector<int> dp(nums.size()+1, 0);
+		dp[1] = nums[0];
+		dp[2] = max(nums[0],nums[1]);
+		for(int i = 3;i<=nums.size();++i) {
+			dp[i] = max(dp[i-1], dp[i-2]+nums[i-1]);
+		}
+		return dp[nums.size()];
+	} 
+
 	//200
 	//�������
 	//int numIslands(vector<vector<char>>& grid) {
@@ -1196,6 +1209,22 @@ public:
 		}
 		return (min == (nums.size() + 1)) ? 0 : min;*/
 	}
+
+	//213
+	int rob(vector<int>& nums) {
+		if (nums.size()==1) return nums[0];
+		if (nums.size()==2) return max(nums[0],nums[1]);
+		vector<vector<int>> dp(2,vector<int>(nums.size()+1, 0));
+		dp[0][1]=nums[0];
+		dp[1][2]=nums[1];
+		for(int i=0;i<2;++i) {
+			for(int j = 2+i; j<=(nums.size() - 1 + i); ++j) {
+				dp[i][j]=max(dp[i][j-1],dp[i][j-2]+nums[j-1]);
+			}
+		}
+		return max(dp[0][nums.size()-1],dp[1][nums.size()]);
+	}
+
 	//215
 	int findKthLargest(vector<int>& nums, int k) {
 		//���η��鲢����
@@ -1464,6 +1493,40 @@ public:
 		return (res[amount] == (amount + 2)) ? -1 : res[amount];
 	}
 	
+	//337
+	int rob(TreeNode* root) {
+		// 迭代方法写二叉树遍历
+		// stack<TreeNode*> stack;
+		// if (!root) return 0;
+		// else stack.emplace(root);
+		// while(!stack.empty()) {
+		// 	TreeNode* nnode = stack.top();
+		// 	if (nnode!=nullptr) {
+		// 		stack.emplace(nullptr);
+		// 		if (nnode->right) stack.emplace(nnode->right);
+		// 		if (nnode->left) stack.emplace(nnode->left);
+		// 	} else {
+		// 		stack.pop();
+		// 		nnode=stack.top();
+		// 		stack.pop();
+		//      //一些处理
+		// 	}
+		// }
+
+		// 递归
+		vector<int> res = robRecursive(root);
+		return max(res[0],res[1]);
+	}
+	vector<int> robRecursive(TreeNode* root) {
+		if (root==nullptr) return {0, 0};
+		vector<int> dp_l = robRecursive(root->left);
+		vector<int> dp_r = robRecursive(root->right);
+		vector<int> dp(2,0);
+		dp[0] = max(dp_l[0],dp_l[1])+max(dp_r[0],dp_r[1]);
+		dp[1] = root->val+dp_l[0]+dp_r[0];
+		return dp;
+	}
+
 	//343
 	int integerBreak(int n) {
 		vector<int> dp(n + 1);
