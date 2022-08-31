@@ -1,1 +1,1 @@
-/usr/lib/ccache/c++     CMakeFiles/leet_test.dir/leetcodeTest.cpp.o  -o leet_test 
+/usr/bin/g++-6  -g   CMakeFiles/leet_test.dir/leetcodeTest.cpp.o  -o leet_test 

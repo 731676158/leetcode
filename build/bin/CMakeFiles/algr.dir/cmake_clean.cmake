@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/algr.dir/algorithm.cpp.o"
-  "algr"
   "algr.pdb"
+  "algr"
 )
 
 # Per-language clean rules from dependency scanning.

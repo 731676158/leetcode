@@ -256,21 +256,33 @@ public:
 		return res;
 	}*/
 	//̰�ķ�
-	int maxSubArray(vector<int>& nums)
-	{
-		int res = INT_MIN;
-		int count = 0;
-		for (int i = 0; i < nums.size(); ++i)
-		{
-			count += nums[i];
-			if (count > res) res = count;
-			if (count < 0)
-			{
-				count = 0;
-			}
-		}
-		return res;
-	}
+	// int maxSubArray(vector<int>& nums)
+	// {
+	// 	int res = INT_MIN;
+	// 	int count = 0;
+	// 	for (int i = 0; i < nums.size(); ++i)
+	// 	{
+	// 		count += nums[i];
+	// 		if (count > res) res = count;
+	// 		if (count < 0)
+	// 		{
+	// 			count = 0;
+	// 		}
+	// 	}
+	// 	return res;
+	// }
+	//动态规划
+	// int maxSubArray(vector<int>& nums) {
+	// 	if (nums.size()==1) return nums[0];
+    //     vector<int> dp(nums.size(),0);
+	// 	dp[0]=nums[0];
+	// 	int result=nums[0];
+	// 	for(int i=1;i<nums.size();++i) {
+	// 		dp[i]=max(dp[i-1]+nums[i],nums[i]);
+	// 		result=(result<dp[i])?dp[i]:result;
+	// 	}
+	// 	return result;
+    // }
 
 	//55
 	bool canJump(vector<int>& nums) {
@@ -1211,7 +1223,7 @@ public:
 	}
 
 	//213
-	int rob(vector<int>& nums) {
+	int rob2(vector<int>& nums) {
 		if (nums.size()==1) return nums[0];
 		if (nums.size()==2) return max(nums[0],nums[1]);
 		vector<vector<int>> dp(2,vector<int>(nums.size()+1, 0));
@@ -1467,6 +1479,19 @@ public:
 		return res[n];
 	}
 	
+	//300
+	int lengthOfLIs(vector<int>& nums) {
+		if (nums.size()==1) return 1;
+		vector<int> dp(nums.size(), 1);
+		int result = 0;
+		for(int i =1;i<nums.size();++i) {
+			for(int j=0;j<i;++j) {
+				if (nums[i]>nums[j]) dp[i] = max(dp[i], dp[j]+1);
+			}
+			if (dp[i]>result) result=dp[i];
+		}
+		return result;
+	}
 
 	//322
 	int coinChange(vector<int>& coins, int amount) {
@@ -1959,6 +1984,18 @@ public:
 		return res;
 	}
 
+	//674
+	int findLengthOfLCIS(vector<int>& nums) {
+		if (nums.size()==1) return 1;
+		vector<int> dp(nums.size(), 1);
+		int result=0;
+		for(int i=1;i<nums.size();++i) {
+			if (nums[i]>nums[i-1]) dp[i]=dp[i-1]+1;
+			if (dp[i]>result) result=dp[i];
+		}
+		return result;
+    }
+
 	//704 ���ֲ���
 	int search(vector<int>& nums, int target) {
 		int l = 0;
@@ -2012,6 +2049,30 @@ public:
 		//}
 		//return -1;
 	}
+
+	//714
+	int maxProfit5(vector<int>& prices, int fee) {
+		vector<vector<int>> dp(prices.size(), vector<int> (2, 0));
+		dp[0][0]=-prices[0];
+		for(int i=1;i<prices.size();++i) {
+			dp[i][0]=max(dp[i-1][0],dp[i-1][1]-prices[i]);
+			dp[i][1]=max(dp[i-1][1], dp[i-1][0]+prices[i]-fee);
+		}
+		return dp[prices.size()-1][1];
+	}
+
+	//718
+	int findLength(vector<int>& nums1, vector<int>& nums2) {
+		vector<vector<int>> dp(nums1.size()+1, vector<int>(nums2.size()+1, 0));
+		int result=0;
+		for(int i=1;i<=nums1.size();++i) {
+			for(int j=1;j<=nums2.size();++j) {
+				if (nums1[i-1]==nums2[j-1]) dp[i][j]=dp[i-1][j-1]+1;
+				if (dp[i][j]>result) result=dp[i][j];
+			}
+		}
+		return result;
+    }
 
 	//746
 	int minCostClimbingStairs(vector<int>& cost) {
@@ -2190,6 +2251,23 @@ public:
 		}
 		return sum - 2 * (res[tgt]);
 	}
+
+	//1143
+	int longestCommonSubsequence(string text1, string text2) {
+		vector<vector<int>> dp(text1.size()+1, vector<int> (text2.size()+1,0));
+		int result = 0;
+		for(int i=1;i<=text1.size();++i) {
+			for(int j=1;j<=text2.size();++j) {
+				if (text1[i-1]==text2[j-1]) {
+					dp[i][j]=dp[i-1][j-1]+1;
+					if (dp[i][j]>result) result=dp[i][j];
+				} else {
+					dp[i][j] = max(dp[i-1][j], dp[i][j-1]);
+				}
+			}
+		}
+		return result;
+    }
 
 	//1456
 	int maxVowels(string s, int k) {

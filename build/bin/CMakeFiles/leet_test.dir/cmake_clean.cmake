@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/leet_test.dir/leetcodeTest.cpp.o"
-  "leet_test"
   "leet_test.pdb"
+  "leet_test"
 )
 
 # Per-language clean rules from dependency scanning.

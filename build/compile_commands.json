@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/jeff/code/leetcode/build/bin",
+  "command": "/usr/bin/g++-6   -I/home/jeff/code/leetcode/include  -g   -o CMakeFiles/algr.dir/algorithm.cpp.o -c /home/jeff/code/leetcode/src/algorithm.cpp",
+  "file": "/home/jeff/code/leetcode/src/algorithm.cpp"
+},
+{
+  "directory": "/home/jeff/code/leetcode/build/bin",
+  "command": "/usr/bin/g++-6   -I/home/jeff/code/leetcode/include  -g   -o CMakeFiles/leet_test.dir/leetcodeTest.cpp.o -c /home/jeff/code/leetcode/src/leetcodeTest.cpp",
+  "file": "/home/jeff/code/leetcode/src/leetcodeTest.cpp"
+}
+]

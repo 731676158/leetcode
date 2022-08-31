@@ -145,11 +145,15 @@ int main()
 	//int res = sl.maxVowels(a, 33);
 	//cout << res;
 
-	Solution_of sl;
-	vector<string> mid{ "5","+","4","-","1","+","7" };
-	vector<string> res = sl.RPN(mid);
-	cout << sl.evalRPN(res) << endl;
+	// Solution_of sl;
+	// vector<string> mid{ "5","+","4","-","1","+","7" };
+	// vector<string> res = sl.RPN(mid);
+	// cout << sl.evalRPN(res) << endl;
 	
+	Solution sl;
+	vector<int> prices{1,3,2,8,4,9};
+	cout <<"final: "<<sl.maxProfit5(prices,2)<<endl;
+
 }
 
 

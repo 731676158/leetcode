@@ -1,1 +1,1 @@
-/usr/lib/ccache/c++     CMakeFiles/algr.dir/algorithm.cpp.o  -o algr 
+/usr/bin/g++-6  -g   CMakeFiles/algr.dir/algorithm.cpp.o  -o algr 
