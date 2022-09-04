@@ -285,16 +285,49 @@ public:
     // }
 
 	//55
+	// bool canJump(vector<int>& nums) {
+	// 	int len = nums[0];
+	// 	for (int i = 0; i < nums.size(); ++i)
+	// 	{
+	// 		if (i > len) return false;
+	// 		if ((i + nums[i]) > len) len = i + nums[i];
+	// 		if (len >= nums.size()) return true;
+	// 	}
+	// 	return false;
+	// }
+	//每个位置跳跃给定步数的方法
+	// bool canJump(vector<int>& nums) {
+	// 	if (nums.size()==1) return true;
+	// 	vector<bool> dp(nums.size(),false);
+	// 	dp[0]=true;
+	// 	for(int i=1;i<nums.size();++i) {
+	// 		for(int j=0;j<i;++j) {
+	// 			dp[i]=(dp[j]==true&&nums[j]==(i-j))||dp[i];
+	// 		}
+	// 	}
+	// 	return dp[nums.size()-1];
+    // }
 	bool canJump(vector<int>& nums) {
-		int len = nums[0];
-		for (int i = 0; i < nums.size(); ++i)
-		{
-			if (i > len) return false;
-			if ((i + nums[i]) > len) len = i + nums[i];
-			if (len >= nums.size()) return true;
+		// //动态规划，但是时间复杂度比较高，遍历了两次
+		// if (nums.size()==1) return true;
+		// vector<bool> dp(nums.size(),false);
+		// dp[0]=true;
+		// for(int i=1;i<nums.size();++i) {
+		// 	for(int j=0;j<i;++j) {
+		// 		dp[i]=(dp[j]==true&&nums[j]>=(i-j))||dp[i];
+		// 	}
+		// }
+		// return dp[nums.size()-1];		
+
+		int start=0;
+		int res=0;
+		while(start<=res) {
+			if (start==nums.size()-1) return true;
+			res=((nums[start]+start)>res)?(nums[start]+start):res;
+			++start;
 		}
-		return false;
-	}
+		return !(start>res);
+    }
 
 	//63
 	int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
@@ -406,6 +439,21 @@ public:
 		return res[n];
 	}
 
+	//72
+	int minDistance(string word1, string word2) {
+		vector<vector<int>> dp(word1.size()+1, vector<int> (word2.size()+1, 0));
+		for (int i=0;i<=word1.size();++i) dp[i][0]=i;
+		for (int i=0;i<=word2.size();++i) dp[0][i]=i;
+		for(int i=1;i<=word1.size();++i) {
+			for(int j=1;j<=word2.size();++j) {
+				if (word1[i-1]==word2[j-1]) dp[i][j]=dp[i-1][j-1];
+				else {
+					dp[i][j]=min(dp[i-1][j], min(dp[i-1][j-1], dp[i][j-1]))+1;
+				}
+			}
+		}
+		return dp[word1.size()][word2.size()];
+    }
 
 	//74 ������ά����
 	bool searchMatrix(vector<vector<int>>& matrix, int target) {
@@ -922,14 +970,18 @@ public:
 
 	//115
 	int numDistinct(string s, string t) {
-		vector<vector<int>> dp(s.size()+1, vector<int>(t.size()+1,0));
-		for(int i=1;i<=s.size();++i) {
-			for(int j=1;j<=t.size();++j) {
-				if (s[i-1]==t[j-1]) dp[i][j]=dp[i-1][j-1]+dp[i][j-1];
+		vector<vector<int>> dp(t.size()+1, vector<int>(s.size()+1,0));
+		for(int i=0;i<=t.size();++i) {
+			if (i==0) {
+				for (int j=0;j<=s.size();++j) dp[i][j]=1;
+				continue;
+			}
+			for(int j=1;j<=s.size();++j) {
+				if (t[i-1]==s[j-1]) dp[i][j]=dp[i-1][j-1]+dp[i][j-1];
 				else dp[i][j]=dp[i][j-1];
 			}
 		}
-		return dp[s.size()][t.size()];
+		return dp[t.size()][s.size()];
     }
 
 	//121
@@ -1867,6 +1919,21 @@ public:
 		return res;
 	}
 
+	//516
+	int longestPalindromeSubseq(string s) {
+		vector<vector<int>> dp(s.size(), vector<int>(s.size(), 0));
+		for(int i=0;i<s.size();++i) dp[i][i]=1;
+		for(int i=1; i<s.size();++i) {
+			for (int j=i-1;j>=0;--j) {
+				if (s[j]!= s[i]) dp[i][j]=max(dp[i-1][j], dp[i][j+1]);
+				else {
+					dp[i][j]=dp[i-1][j+1]+2;
+				}
+			}
+		}
+		return dp[s.size()-1][0];
+    }
+
 	//518
 	int change(int amount, vector<int>& coins) {
 		
@@ -1952,6 +2019,20 @@ public:
 		return dep;
 	}
 
+	//583
+	int minDistance(string word1, string word2) {
+		vector<vector<int>> dp(word1.size()+1, vector<int> (word2.size()+1,0));
+		for (int i=0;i<=word2.size() ;++i) dp[0][i]=i;
+		for (int i=0;i<=word1.size() ;++i) dp[i][0]=i;
+		for(int i=1;i<=word1.size();++i) {
+			for(int j=1;j<=word2.size();++j) {
+				if (word1[i-1]==word2[j-1]) dp[i][j]=dp[i-1][j-1];
+				else dp[i][j]=min(dp[i-1][j], dp[i][j-1])+1;
+			}
+		}
+		return dp[word1.size()][word2.size()];
+    }
+
 	//589 N����
 	vector<int> preorder(Node* root) {
 		stack<Node*> stk;
@@ -2007,6 +2088,28 @@ public:
 		}
 		return res;
 	}
+
+	//647
+	 int countSubstrings(string s) {
+		if (s.size()==1) return true;
+		vector<vector<bool>> dp(s.size(), vector<bool> (s.size(),0));
+		int result=0;
+		for (int i=0;i<s.size();++i) {
+			dp[i][i]=1;
+			++result;
+		}
+		for(int i=1;i<s.size();++i) {
+			for (int j=0;j<i;++j) {
+				if (s[i]==s[j]) {
+					if ((i-j)==1||dp[i-1][j+1]==true) {
+						dp[i][j]=true;
+						++result;
+					} 
+				} else dp[i][j]=false;
+			}
+		}
+		return result;
+    }
 
 	//674
 	int findLengthOfLCIS(vector<int>& nums) {
@@ -2073,6 +2176,26 @@ public:
 		//}
 		//return -1;
 	}
+
+	int search(vector<int>& nums, int target) {
+		int left=0;
+		int right=nums.size()-1;
+		int mid=0;
+		if (nums[left]>target) return -1;
+		if (nums[right]<target) return -1;
+		while (left<=right) {
+			mid=(left+right)/2;
+			if (nums[mid]==target) {
+				return mid;
+			}else if (nums[mid]>target) {
+				right=mid;
+			} else {
+				if (nums[mid]<target&&(mid==(nums.size()-1) || nums[mid+1]>target)) return -1;
+				left=mid+1;
+			}
+		}
+		return -1;
+    }
 
 	//714
 	int maxProfit5(vector<int>& prices, int fee) {
