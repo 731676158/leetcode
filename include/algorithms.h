@@ -920,6 +920,18 @@ public:
 		return;
 	}
 
+	//115
+	int numDistinct(string s, string t) {
+		vector<vector<int>> dp(s.size()+1, vector<int>(t.size()+1,0));
+		for(int i=1;i<=s.size();++i) {
+			for(int j=1;j<=t.size();++j) {
+				if (s[i-1]==t[j-1]) dp[i][j]=dp[i-1][j-1]+dp[i][j-1];
+				else dp[i][j]=dp[i][j-1];
+			}
+		}
+		return dp[s.size()][t.size()];
+    }
+
 	//121
 	int maxProfit(vector<int>& prices) {
 		vector<int> buy(prices.size());
@@ -1655,6 +1667,18 @@ public:
 		return res[target];
 	}
 
+	//392
+	bool isSubsequence(string s, string t) {
+		vector<vector<int>> dp(s.size()+1, vector<int> (t.size()+1, 0));
+		for(int i=1;i<=s.size();++i) {
+			for(int j=1;j<=t.size();++j) {
+				if (s[i-1]==t[j-1]) dp[i][j]=dp[i-1][j-1]+1;
+				else dp[i][j]=dp[i][j-1];
+			}
+		}
+		return (dp[s.size()][t.size()]==s.size());
+    }
+
 	//404
 	int sumOfLeftLeaves(TreeNode* root) {
 		stack<TreeNode*> stk;
@@ -2222,6 +2246,18 @@ public:
 		}
 		return res;
 	}
+
+	//1035
+	int maxUncrossedLines(vector<int>& nums1, vector<int>& nums2) {
+		vector<vector<int>> dp(nums1.size()+1, vector<int>(nums2.size()+1, 0));
+		for(int i=1;i<=nums1.size();++i) {
+			for(int j=1;j<=nums2.size();++j) {
+				if (nums1[i-1]==nums2[j-1]) dp[i][j]=dp[i-1][j-1]+1;
+				else dp[i][j]=max(dp[i-1][j], dp[i][j-1]);
+			}
+		}
+		return dp[nums1.size()][nums2.size()];
+    }
 
 	//1049
 	int lastStoneWeightII(vector<int>& stones) {
