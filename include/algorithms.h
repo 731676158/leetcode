@@ -1828,6 +1828,36 @@ public:
 		return res;
 	}
 
+	//463
+	int islandPerimeter(vector<vector<int>>& grid) {
+		int length = 0;
+		for (int i = 0; i < grid.size(); ++i) {
+			for (int j = 0; j < grid[0].size(); ++j) {
+				if (grid[i][j] == 1) {
+					length += dfs(grid, make_pair(i, j));
+				}
+			}
+		}
+		return length;
+	}
+	int dfs(vector<vector<int>>& grid, pair<int, int> pos) {
+		if (pos.first < 0 || pos.first >= grid.size() ||
+			pos.second < 0 || pos.second >= grid[0].size() ||
+			grid[pos.first][pos.second] == 0) {
+			return 1;
+		}
+		if (grid[pos.first][pos.second] == 2) {
+			return 0;
+		}
+		grid[pos.first][pos.second] = 2;
+		int res = 0;
+		res += dfs(grid, make_pair(pos.first - 1, pos.second));
+		res += dfs(grid, make_pair(pos.first, pos.second - 1));
+		res += dfs(grid, make_pair(pos.first + 1, pos.second));
+		res += dfs(grid, make_pair(pos.first, pos.second + 1));
+		return res;
+	}
+
 	//474
 	int findMaxForm(vector<string>& strs, int m, int n) {
 		vector<vector<int>> res(m + 1, vector<int>(n + 1, 0));
@@ -2020,7 +2050,7 @@ public:
 	}
 
 	//583
-	int minDistance(string word1, string word2) {
+	int minDistance2(string word1, string word2) {
 		vector<vector<int>> dp(word1.size()+1, vector<int> (word2.size()+1,0));
 		for (int i=0;i<=word2.size() ;++i) dp[0][i]=i;
 		for (int i=0;i<=word1.size() ;++i) dp[i][0]=i;
@@ -2123,6 +2153,37 @@ public:
 		return result;
     }
 
+	//695
+	int maxAreaOfIsland(vector<vector<int>>& grid) {
+		int maxarea = 0;
+		for (int i = 0; i < grid.size(); ++i) {
+			for (int j = 0; j < grid[0].size(); ++j) {
+				if (grid[i][j] == 1) {
+					int rec = recAreaDFS(grid, make_pair(i, j));
+					maxarea = (maxarea < rec) ? rec : maxarea;
+				}
+			}
+		}
+		return maxarea;
+	}
+	int recAreaDFS(vector<vector<int>>& grid, pair<int,int> pos) {
+		if (pos.first < 0 || pos.first >= grid.size() ||
+			pos.second < 0 || pos.second >= grid[0].size() ||
+			grid[pos.first][pos.second] == 0) {
+			return 0;
+		}
+		if (grid[pos.first][pos.second] == 2) {
+			return 0;
+		}
+		grid[pos.first][pos.second] = 2;
+		int res = 0;
+		res += recAreaDFS(grid, make_pair(pos.first - 1, pos.second));
+		res += recAreaDFS(grid, make_pair(pos.first, pos.second - 1));
+		res += recAreaDFS(grid, make_pair(pos.first + 1, pos.second));
+		res += recAreaDFS(grid, make_pair(pos.first, pos.second + 1));
+		return res + 1;
+	}
+
 	//704 ���ֲ���
 	int search(vector<int>& nums, int target) {
 		int l = 0;
@@ -2177,25 +2238,25 @@ public:
 		//return -1;
 	}
 
-	int search(vector<int>& nums, int target) {
-		int left=0;
-		int right=nums.size()-1;
-		int mid=0;
-		if (nums[left]>target) return -1;
-		if (nums[right]<target) return -1;
-		while (left<=right) {
-			mid=(left+right)/2;
-			if (nums[mid]==target) {
-				return mid;
-			}else if (nums[mid]>target) {
-				right=mid;
-			} else {
-				if (nums[mid]<target&&(mid==(nums.size()-1) || nums[mid+1]>target)) return -1;
-				left=mid+1;
-			}
-		}
-		return -1;
-    }
+	//int search(vector<int>& nums, int target) {
+	//	int left=0;
+	//	int right=nums.size()-1;
+	//	int mid=0;
+	//	if (nums[left]>target) return -1;
+	//	if (nums[right]<target) return -1;
+	//	while (left<=right) {
+	//		mid=(left+right)/2;
+	//		if (nums[mid]==target) {
+	//			return mid;
+	//		}else if (nums[mid]>target) {
+	//			right=mid;
+	//		} else {
+	//			if (nums[mid]<target&&(mid==(nums.size()-1) || nums[mid+1]>target)) return -1;
+	//			left=mid+1;
+	//		}
+	//	}
+	//	return -1;
+ //   }
 
 	//714
 	int maxProfit5(vector<int>& prices, int fee) {
@@ -2310,6 +2371,67 @@ public:
 		return r;
 	}
 
+	//827
+	int largestIsland(vector<vector<int>>& grid) {
+		vector<int> areas;
+		int result = 0;
+		for (int i = 0; i < grid.size(); ++i) {
+			for (int j = 0; j < grid[0].size(); ++j) {
+				if (grid[i][j] == 1) {
+					int area = recArea(grid, make_pair(i, j), areas.size() + 2);
+					areas.push_back(area);
+					// 最终最大岛屿的面积等于 单个岛屿的面积 与拼凑方案的面积 各自最大值的最大值
+					result = max(result, area);
+				}
+			}
+		}
+		for (int i = 0; i < grid.size(); ++i) {
+			for (int j = 0; j < grid.size(); ++j) {
+				if (grid[i][j] == 0) {
+					int res = 0;
+					int index = 0;
+					int index2 = 0;
+					int index3 = 0;
+					if (i > 0 && grid[i-1][j] != 0) {
+						index = grid[i - 1][j];
+						res += areas[index - 2];
+					}
+					if (j > 0 && grid[i][j - 1] != 0 && index != grid[i][j - 1]) {
+						index2 = grid[i][j - 1];
+						res += areas[index2 - 2];
+					}
+					if (i < grid.size() - 1 && grid[i + 1][j] != 0 &&
+							index != grid[i + 1][j] && index2 != grid[i + 1][j]) {
+						index3 = grid[i + 1][j];
+						res += areas[index3 - 2];
+					}
+					if (j < grid[0].size() - 1 && grid[i][j + 1] != 0 &&
+						index != grid[i][j + 1] && index2 != grid[i][j + 1] &&
+						index3 != grid[i][j + 1]) {
+						res += areas[grid[i][j + 1] - 2];
+					}
+					++res;
+					result = max(result, res);
+				}
+			}
+		}
+		return result;
+	}
+	int recArea(vector<vector<int>>& grid, pair<int, int> pos, int flag) {
+		if (pos.first < 0 || pos.first >= grid.size() ||
+			pos.second < 0 || pos.second >= grid[0].size() ||
+			grid[pos.first][pos.second] == 0||
+			grid[pos.first][pos.second] == flag) {
+			return 0;
+		}
+		grid[pos.first][pos.second] = flag;
+		int res = 0;
+		res += recArea(grid, make_pair(pos.first - 1, pos.second), flag);
+		res += recArea(grid, make_pair(pos.first, pos.second - 1), flag);
+		res += recArea(grid, make_pair(pos.first + 1, pos.second), flag);
+		res += recArea(grid, make_pair(pos.first, pos.second + 1), flag);
+		return res + 1;
+	}
 
 	//881 ����ͧ
 	int numRescueBoats(vector<int>& people, int limit) {
