@@ -153,6 +153,8 @@ int main()
 	Solution sl;
 	vector<int> prices{1,3,2,8,4,9};
 	cout <<"final: "<<sl.maxProfit5(prices,2)<<endl;
+	system("pause");
+	return 0;
 
 }
 
